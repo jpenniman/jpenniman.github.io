@@ -1,16 +1,15 @@
 /* Pagination */
-.pagination {
-  margin-bottom: 80px;
-
-  @media only screen and (max-width: $mobile) {
-    margin-bottom: 60px;
-  }
-}
-
 .pagination__inner {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 40px 0;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+
+  @media only screen and (max-width: $mobile) {
+    padding: 32px 0
+  }
 }
 
 .pagination__list {
@@ -18,106 +17,46 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 700;
   line-height: 1;
+  text-transform: uppercase;
   color: var(--text-color);
-
-  @media only screen and (max-width: $mobile) {
-    align-items: stretch;
-    font-size: 16px;
-  }
-}
-
-.pagination__item {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding: 24px 20px;
-  text-align: center;
-  border-radius: 8px;
-  background: var(--background-alt-color);
-
-  @media only screen and (max-width: $mobile) {
-    align-items: center;
-    padding: 20px;
-    border-radius: 8px;
-  }
 }
 
 .pagination__count {
-  margin: 0 32px;
-  font-size: 16px;
-  color: var(--link-color);
-
-  @media only screen and (max-width: $tablet) {
-    margin: 0 12px;
-  }
-
-  @media only screen and (max-width: $mobile) {
-    margin: 0 8px;
-    font-size: 14px;
-    line-height: 1.2;
-  }
+  display: inline-block;
+  padding: 0 15px;
+  margin: 0 15px;
+  font-size: 13px;
+  color: var(--text-alt-color);
 }
 
 .pagination__next,
 .pagination__prev {
-  &:hover {
-    color: var(--heading-font-color);
+  i {
+    font-size: 13px;
   }
 
-  i {
-    font-size: 15px;
-    transition: transform .15s ease;
-    will-change: transform;
+  &:hover {
+    color: var(--brand-color);
   }
 
   &.disabled {
-    opacity: 0.64;
+    opacity: 0.4;
     cursor: not-allowed;
     color: inherit;
-    
-    &:hover {
-      i {
-        transform: none;
-      }
-    }
-  }
-}
-
-.dark-mode {
-
-  .pagination__next,
-  .pagination__prev {
-
-    &.disabled {
-      opacity: 0.78;
-    }
   }
 }
 
 .pagination__next {
-  &:hover {
-    i {
-      transform: translateX(2px);
-    }
-  }
-
   i {
-    margin-left: 5px;
+    margin-left: 4px;
   }
 }
 
 .pagination__prev {
-  &:hover {
-    i {
-      transform: translateX(-2px);
-    }
-  }
-
   i {
-    margin-right: 5px;
+    margin-right: 4px;
   }
 }

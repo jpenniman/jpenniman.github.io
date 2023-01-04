@@ -3,11 +3,10 @@
 */
 
 .highlight {
-  margin-bottom: 32px;
   background: var(--syntax-highlighting-background);
 
   .highlighter-rouge & {
-    background: var(--syntax-highlighting-background);
+    background: #eef;
   }
 
   .c     { color: #998; font-style: italic } // Comment

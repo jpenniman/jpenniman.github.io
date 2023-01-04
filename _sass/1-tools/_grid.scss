@@ -1,6 +1,6 @@
 /* Grid */
 $columns: 12;
-$container-base-width: 1140px;
+$container-base-width: 1080px;
 $container-offset: $base-spacing-unit;
 
 $desktop: 1024px;
@@ -29,8 +29,6 @@ $mq: ( $mobile:$columns, $tablet:$columns, $desktop:$columns );
 
   @media only screen and (max-width: $mobile) {
     max-width: 480px;
-    padding-left: calc(#{$container-offset} + 4px);
-    padding-right: calc(#{$container-offset} + 4px);
   }
 }
 

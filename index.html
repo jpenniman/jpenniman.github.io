@@ -1,6 +1,5 @@
 ---
 layout: default
-image: '/images/01.jpg'
 ---
 
 {% include hero.html %}
@@ -9,12 +8,10 @@ image: '/images/01.jpg'
   <div class="row animate">
     {% if site.posts.size > 0 %}
       {% for post in paginator.posts %}
-        {% include article.html %}
+        {% include article-content.html %}
       {% endfor %}
     {% endif %}
   </div>
 </div>
 
 {% include pagination.html %}
-
-{% include section-tags.html %}

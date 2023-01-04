@@ -1,87 +1,81 @@
-document.addEventListener("DOMContentLoaded", function() {
+$(document).ready(function() {
   'use strict';
 
-  var html = document.querySelector('html'),
-    menuOpenIcon = document.querySelector(".icon__menu"),
-    menuCloseIcon = document.querySelector(".nav__icon-close"),
-    menuList = document.querySelector(".main-nav"),
-    searchOpenIcon = document.querySelector(".icon__search"),
-    searchCloseIcon = document.querySelector(".search__close"),
-    searchInput = document.querySelector(".search__text"),
-    search = document.querySelector(".search"),
-    searchBox = document.querySelector(".search__box"),
-    toggleTheme = document.querySelector(".toggle-theme"),
-    btnScrollToTop = document.querySelector(".top");
+  var html = $('html'),
+    menuOpenIcon = $(".nav__icon-menu"),
+    menuCloseIcon = $(".nav__icon-close"),
+    menuList = $(".main-nav"),
+    searchOpenIcon = $(".nav__icon-search"),
+    searchCloseIcon = $(".search__close"),
+    searchBox = $(".search"),
+    toggleTheme = $(".toggle-theme"),
+    searchInput = $(".search__text");
 
 
-  /* =======================================================
+  /* ==================================
   // Menu + Search + Theme Switcher
-  ======================================================= */
-  menuOpenIcon.addEventListener("click", () => {
+  ================================== */
+  menuOpenIcon.click(function() {
     menuOpen();
-  });
+  })
 
-  menuCloseIcon.addEventListener("click", () => {
+  menuCloseIcon.click(function () {
     menuClose();
-  });
+  })
 
-  function menuOpen() {
-    menuList.classList.add("is-open");
-  }
-  
-  function menuClose() {
-    menuList.classList.remove("is-open");
-  }
-
-  searchOpenIcon.addEventListener("click", () => {
+  searchOpenIcon.click(function () {
     searchOpen();
   });
 
-  searchCloseIcon.addEventListener("click", () => {
+  searchCloseIcon.click(function () {
     searchClose();
   });
 
+  toggleTheme.click(function () {
+    darkMode()
+  });
+
+  function menuOpen() {
+    menuList.addClass("is-open");
+  }
+
+  function menuClose() {
+    menuList.removeClass("is-open");
+  }
+
   function searchOpen() {
-    search.classList.add("is-visible");
+    searchBox.addClass("is-visible");
     setTimeout(function () {
       searchInput.focus();
-    }, 250);
+    }, 150);
   }
 
   function searchClose() {
-    search.classList.remove("is-visible");
+    searchBox.removeClass("is-visible");
   }
 
-  searchBox.addEventListener("keydown", function(event) {
+  $('.search, .search__box').on('click keyup', function(event) {
     if (event.target == this || event.keyCode == 27) {
-      search.classList.remove('is-visible');
+      $('.search').removeClass('is-visible');
     }
   });
 
-  if (toggleTheme) {
-    toggleTheme.addEventListener("click", () => {
-      darkMode();
-    });
-  };
-
-
-  // Theme Switcher
   function darkMode() {
-    if (html.classList.contains('dark-mode')) {
-      html.classList.remove('dark-mode');
-      localStorage.removeItem("theme");
+    if (html.hasClass('dark-mode')) {
+      html.removeClass('dark-mode');
+      localStorage.removeItem("theme")
       document.documentElement.removeAttribute("dark");
     } else {
-      html.classList.add('dark-mode');
+      html.addClass('dark-mode');
       localStorage.setItem("theme", "dark");
       document.documentElement.setAttribute("dark", "");
     }
   }
 
 
-  // =====================
+  /* ========================
   // Simple Jekyll Search
-  // =====================
+  ======================== */
   SimpleJekyllSearch({
     searchInput: document.getElementById("js-search-input"),
     resultsContainer: document.getElementById("js-results-container"),
@@ -94,61 +88,29 @@ document.addEventListener("DOMContentLoaded", function() {
   /* =======================
   // Responsive Videos
   ======================= */
-  reframe(".post__content iframe:not(.reframe-off), .page__content iframe:not(.reframe-off)");
-
-
-  /* =======================
-  // LazyLoad Images
-  ======================= */
-  var lazyLoadInstance = new LazyLoad({
-    elements_selector: ".lazy"
-  })
+  $(".post__content, .page__content").fitVids({
+    customSelector: ['iframe[src*="ted.com"]', 'iframe[src*="facebook.com"]']
+  });
 
 
   /* =======================
   // Zoom Image
   ======================= */
-  const lightense = document.querySelector(".page__content img, .post__content img, .gallery__image img"),
-  imageLink = document.querySelectorAll(".page__content a img, .post__content a img, .gallery__image a img");
-
-  if (imageLink) {
-    for (var i = 0; i < imageLink.length; i++) imageLink[i].parentNode.classList.add("image-link");
-    for (var i = 0; i < imageLink.length; i++) imageLink[i].classList.add("no-lightense");
-  }
-
-  if (lightense) {
-    Lightense(".page__content img:not(.no-lightense), .post__content img:not(.no-lightense), .gallery__image img:not(.no-lightense)", {
-    padding: 60,
-    offset: 30
-    });
-  }
-
-
-
-  /* =================================
-  // Smooth scroll to the tags page
-  ================================= */
-  document.querySelectorAll(".tag__link, .top__link").forEach(anchor => {
-    anchor.addEventListener("click", function (e) {
-      e.preventDefault();
-
-      document.querySelector(this.getAttribute("href")).scrollIntoView({
-        behavior: "smooth"
-      });
-    });
-  });
+  $(".page img, .post img").attr("data-action", "zoom");
+  $(".page a img, .post a img").removeAttr("data-action", "zoom");
 
 
   /* =======================
   // Scroll Top Button
   ======================= */
-  btnScrollToTop.addEventListener("click", function () {
-    if (window.scrollY != 0) {
-      window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: "smooth"
-      })
+  $(".top").click(function() {
+    $("html, body").stop().animate({ scrollTop: 0 }, "slow", "swing");
+  });
+  $(window).scroll(function() {
+    if ($(this).scrollTop() > $(window).height()) {
+      $(".top").addClass("is-active");
+    } else {
+      $(".top").removeClass("is-active");
     }
   });
 

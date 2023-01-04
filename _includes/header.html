@@ -1,5 +1,5 @@
 <!-- begin header -->
-<header class="header" id="top">
+<header class="header">
   <div class="container">
     <div class="row">
       <div class="header__inner col col-12">
@@ -33,29 +33,13 @@
                   {% endif %}
                 {% endunless %}
               {% endfor %}
-              {% if site.color_scheme == "auto" %}
-              <li class="nav__item nav__item-icon">
-                <div class="toggle-theme">
-                  <div class="toggle-moon" title="Enable dark mode"><i class="ion ion-ios-moon"></i></div>
-                  <div class="toggle-sun" title="Enable light mode"><i class="ion ion-ios-sunny"></i></div>
-                </div>
-              </li>
-              {% elsif site.color_scheme == "light" or site.color_scheme == "dark" %}
-              {% else %}
-              <li class="nav__item nav__item-icon">
-                <div class="toggle-theme">
-                  <div class="toggle-moon" title="Enable dark mode"><i class="ion ion-ios-moon"></i></div>
-                  <div class="toggle-sun" title="Enable light mode"><i class="ion ion-ios-sunny"></i></div>
-                </div>
-              </li>
-              {% endif %}
             </ul>
           </div>
         </nav>
 
-        <div class="nav-button">
-          <i class="nav__icon icon__menu ion ion-md-menu"></i>
-          <i class="nav__icon icon__search ion ion-md-search"></i>
+        <div class="nav-buttons">
+          <i class="nav__icon nav__icon-menu ion ion-md-menu"></i>
+          <i class="nav__icon nav__icon-search ion ion-md-search"></i>
         </div>
 
       </div>

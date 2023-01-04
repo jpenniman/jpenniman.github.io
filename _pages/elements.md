@@ -2,10 +2,10 @@
 layout: page
 title: Elements
 permalink: /elements/
-image: '/images/17.jpg'
+image: '/images/11.jpg'
 ---
 
-A paragraph looks like this — Globally incubate standards compliant channels before scalable benefits. Quickly disseminate superior deliverables whereas web-enabled applications. Quickly drive clicks-and-mortar catalysts for change before vertical architectures. Credibly reintermediate backend ideas for cross-platform models. Continually reintermediate integrated processes through technically sound intellectual capital. Holistically foster superior methodologies.
+A paragraph looks like this — In omni enim arte vel studio vel quavis scientia vel in ipsa virtute optimum quidque rarissimum est. Quod est, ut dixi, habere ea, quae secundum naturam sint, vel omnia vel plurima et maxima. Quodsi ipsam honestatem undique pertectam atque absolutam. Tecum optime, deinde etiam cum mediocri amico. Neque enim disputari sine reprehensione nec cum iracundia aut pertinacia recte disputari potest. Partus ancillae sitne in fructu.
 
 ***
 
@@ -110,37 +110,29 @@ li {
 
 ## Images
 
-![Beach]({{site.baseurl}}/images/12-1.jpg#wide)
-*Photo by [Luke McKeown](https://unsplash.com/photos/nlyWZtWTzCo) on [Unsplash](https://unsplash.com/)*
-
 <div class="gallery-box">
   <div class="gallery">
-    <img src="/images/100.jpg">
-    <img src="/images/101.jpg">
-    <img src="/images/102.jpg">
-    <img src="/images/103.jpg">
-    <img src="/images/104.jpg">
-    <img src="/images/105.jpg">
-    <img src="/images/106.jpg">
-    <img src="/images/107.jpg">
-    <img src="/images/108.jpg">
+    <img src="/images/04-1.jpg">
+    <img src="/images/04-2.jpg">
+    <img src="/images/06-1.jpg">
+    <img src="/images/06.jpg">
+    <img src="/images/08.jpg">
+    <img src="/images/07-1.jpg">
   </div>
   <em>Gallery / <a href="https://unsplash.com/" target="_blank">Unsplash</a></em>
 </div>
 
-![Sea]({{site.baseurl}}/images/18.jpg)
-*Photo by [Sean Kelley](https://unsplash.com/photos/aQ5MBh_mfcc) on [Unsplash](https://unsplash.com/)*
+![Graffiti]({{site.baseurl}}/images/07.jpg)
+*Photo by [Alex Kotliarskyi](https://unsplash.com/photos/ourQHRTE2IM) on [Unsplash](https://unsplash.com/)*
 
 ***
 
 ## Youtube Embed
 
-<p><iframe src="https://www.youtube.com/embed/gghgYaYeG_M" loading="lazy" frameborder="0" allowfullscreen></iframe></p>
+<p><iframe src="https://www.youtube.com/embed/QyQ85DEVpbc" frameborder="0" allowfullscreen></iframe></p>
 
 ***
 
 ## Vimeo Embed
 
-<p><iframe src="https://player.vimeo.com/video/147264547?title=0&byline=0" loading="lazy" width="640" height="360" frameborder="0" allowfullscreen></iframe></p>
-
-***
+<p><iframe src="https://player.vimeo.com/video/107654760" width="640" height="360" frameborder="0" allowfullscreen></iframe></p>

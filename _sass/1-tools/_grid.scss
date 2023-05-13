@@ -1,6 +1,6 @@
 /* Grid */
 $columns: 12;
-$container-base-width: 1080px;
+$container-base-width: 1140px;
 $container-offset: $base-spacing-unit;
 
 $desktop: 1024px;
@@ -29,6 +29,8 @@ $mq: ( $mobile:$columns, $tablet:$columns, $desktop:$columns );
 
   @media only screen and (max-width: $mobile) {
     max-width: 480px;
+    padding-left: calc(#{$container-offset} + 4px);
+    padding-right: calc(#{$container-offset} + 4px);
   }
 }
 
@@ -54,19 +56,19 @@ $mq: ( $mobile:$columns, $tablet:$columns, $desktop:$columns );
 
 @for $i from 0 through $columns {
   .col-#{$i} {
-    width: percentage( calc($i / $columns) );
+    width: percentage( $i / $columns );
   }
 }
 
 @for $i from 0 through $columns {
   .push-#{$i} {
-    margin-left: percentage( calc($i / $columns) );
+    margin-left: percentage( $i / $columns );
   }
 }
 
 @for $i from 0 through $columns {
   .pull-#{$i} {
-    margin-right: percentage( calc($i / $columns) );
+    margin-right: percentage( $i / $columns );
   }
 }
 
@@ -78,19 +80,19 @@ $mq: ( $mobile:$columns, $tablet:$columns, $desktop:$columns );
 
     @for $i from 0 through $columns {
       .col-d-#{$i} {
-        width: percentage( calc($i / $columns) );
+        width: percentage( $i / $columns );
       }
     }
 
     @for $i from 0 through $columns {
       .push-d-#{$i} {
-        margin-left: percentage( calc($i / $columns) );
+        margin-left: percentage( $i / $columns );
       }
     }
 
     @for $i from 0 through $columns {
       .pull-d-#{$i} {
-        margin-right: percentage( calc($i / $columns) );
+        margin-right: percentage( $i / $columns );
       }
     }
   }
@@ -101,19 +103,19 @@ $mq: ( $mobile:$columns, $tablet:$columns, $desktop:$columns );
 
     @for $i from 0 through $columns {
       .col-t-#{$i} {
-        width: percentage( calc($i / $columns) );
+        width: percentage( $i / $columns );
       }
     }
 
     @for $i from 0 through $columns {
       .push-t-#{$i} {
-        margin-left: percentage( calc($i / $columns) );
+        margin-left: percentage( $i / $columns );
       }
     }
 
     @for $i from 0 through $columns {
       .pull-t-#{$i} {
-        margin-right: percentage( calc($i / $columns) );
+        margin-right: percentage( $i / $columns );
       }
     }
   }
@@ -123,19 +125,19 @@ $mq: ( $mobile:$columns, $tablet:$columns, $desktop:$columns );
 
     @for $i from 0 through $columns {
       .col-m-#{$i} {
-        width: percentage( calc($i / $columns) );
+        width: percentage( $i / $columns );
       }
     }
 
     @for $i from 0 through $columns {
       .push-m-#{$i} {
-        margin-left: percentage( calc($i / $columns) );
+        margin-left: percentage( $i / $columns );
       }
     }
 
     @for $i from 0 through $columns {
       .pull-m-#{$i} {
-        margin-right: percentage( calc($i / $columns) );
+        margin-right: percentage( $i / $columns );
       }
     }
   }

@@ -1,81 +1,87 @@
-$(document).ready(function() {
+document.addEventListener("DOMContentLoaded", function() {
   'use strict';
 
-  var html = $('html'),
-    menuOpenIcon = $(".nav__icon-menu"),
-    menuCloseIcon = $(".nav__icon-close"),
-    menuList = $(".main-nav"),
-    searchOpenIcon = $(".nav__icon-search"),
-    searchCloseIcon = $(".search__close"),
-    searchBox = $(".search"),
-    toggleTheme = $(".toggle-theme"),
-    searchInput = $(".search__text");
+  var html = document.querySelector('html'),
+    menuOpenIcon = document.querySelector(".icon__menu"),
+    menuCloseIcon = document.querySelector(".nav__icon-close"),
+    menuList = document.querySelector(".main-nav"),
+    searchOpenIcon = document.querySelector(".icon__search"),
+    searchCloseIcon = document.querySelector(".search__close"),
+    searchInput = document.querySelector(".search__text"),
+    search = document.querySelector(".search"),
+    searchBox = document.querySelector(".search__box"),
+    toggleTheme = document.querySelector(".toggle-theme"),
+    btnScrollToTop = document.querySelector(".top");
 
 
-  /* ==================================
+  /* =======================================================
   // Menu + Search + Theme Switcher
-  ================================== */
-  menuOpenIcon.click(function() {
+  ======================================================= */
+  menuOpenIcon.addEventListener("click", () => {
     menuOpen();
-  })
+  });
 
-  menuCloseIcon.click(function () {
+  menuCloseIcon.addEventListener("click", () => {
     menuClose();
-  })
-
-  searchOpenIcon.click(function () {
-    searchOpen();
-  });
-
-  searchCloseIcon.click(function () {
-    searchClose();
-  });
-
-  toggleTheme.click(function () {
-    darkMode()
   });
 
   function menuOpen() {
-    menuList.addClass("is-open");
+    menuList.classList.add("is-open");
+  }
+  
+  function menuClose() {
+    menuList.classList.remove("is-open");
   }
 
-  function menuClose() {
-    menuList.removeClass("is-open");
-  }
+  searchOpenIcon.addEventListener("click", () => {
+    searchOpen();
+  });
+
+  searchCloseIcon.addEventListener("click", () => {
+    searchClose();
+  });
 
   function searchOpen() {
-    searchBox.addClass("is-visible");
+    search.classList.add("is-visible");
     setTimeout(function () {
       searchInput.focus();
-    }, 150);
+    }, 250);
   }
 
   function searchClose() {
-    searchBox.removeClass("is-visible");
+    search.classList.remove("is-visible");
   }
 
-  $('.search, .search__box').on('click keyup', function(event) {
+  searchBox.addEventListener("keydown", function(event) {
     if (event.target == this || event.keyCode == 27) {
-      $('.search').removeClass('is-visible');
+      search.classList.remove('is-visible');
     }
   });
 
+  if (toggleTheme) {
+    toggleTheme.addEventListener("click", () => {
+      darkMode();
+    });
+  };
+
+
+  // Theme Switcher
   function darkMode() {
-    if (html.hasClass('dark-mode')) {
-      html.removeClass('dark-mode');
-      localStorage.removeItem("theme")
+    if (html.classList.contains('dark-mode')) {
+      html.classList.remove('dark-mode');
+      localStorage.removeItem("theme");
       document.documentElement.removeAttribute("dark");
     } else {
-      html.addClass('dark-mode');
+      html.classList.add('dark-mode');
       localStorage.setItem("theme", "dark");
       document.documentElement.setAttribute("dark", "");
     }
   }
 
 
-  /* ========================
+  // =====================
   // Simple Jekyll Search
-  ======================== */
+  // =====================
   SimpleJekyllSearch({
     searchInput: document.getElementById("js-search-input"),
     resultsContainer: document.getElementById("js-results-container"),
@@ -88,29 +94,61 @@ $(document).ready(function() {
   /* =======================
   // Responsive Videos
   ======================= */
-  $(".post__content, .page__content").fitVids({
-    customSelector: ['iframe[src*="ted.com"]', 'iframe[src*="facebook.com"]']
-  });
+  reframe(".post__content iframe:not(.reframe-off), .page__content iframe:not(.reframe-off)");
+
+
+  /* =======================
+  // LazyLoad Images
+  ======================= */
+  var lazyLoadInstance = new LazyLoad({
+    elements_selector: ".lazy"
+  })
 
 
   /* =======================
   // Zoom Image
   ======================= */
-  $(".page img, .post img").attr("data-action", "zoom");
-  $(".page a img, .post a img").removeAttr("data-action", "zoom");
+  const lightense = document.querySelector(".page__content img, .post__content img, .gallery__image img"),
+  imageLink = document.querySelectorAll(".page__content a img, .post__content a img, .gallery__image a img");
+
+  if (imageLink) {
+    for (var i = 0; i < imageLink.length; i++) imageLink[i].parentNode.classList.add("image-link");
+    for (var i = 0; i < imageLink.length; i++) imageLink[i].classList.add("no-lightense");
+  }
+
+  if (lightense) {
+    Lightense(".page__content img:not(.no-lightense), .post__content img:not(.no-lightense), .gallery__image img:not(.no-lightense)", {
+    padding: 60,
+    offset: 30
+    });
+  }
+
+
+
+  /* =================================
+  // Smooth scroll to the tags page
+  ================================= */
+  document.querySelectorAll(".tag__link, .top__link").forEach(anchor => {
+    anchor.addEventListener("click", function (e) {
+      e.preventDefault();
+
+      document.querySelector(this.getAttribute("href")).scrollIntoView({
+        behavior: "smooth"
+      });
+    });
+  });
 
 
   /* =======================
   // Scroll Top Button
   ======================= */
-  $(".top").click(function() {
-    $("html, body").stop().animate({ scrollTop: 0 }, "slow", "swing");
-  });
-  $(window).scroll(function() {
-    if ($(this).scrollTop() > $(window).height()) {
-      $(".top").addClass("is-active");
-    } else {
-      $(".top").removeClass("is-active");
+  btnScrollToTop.addEventListener("click", function () {
+    if (window.scrollY != 0) {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "smooth"
+      })
     }
   });
 

@@ -19,8 +19,9 @@
 }
 
 .search__box {
+  max-width: 540px;
   margin: 0 auto;
-  padding-top: 140px;
+  padding-top: 120px;
 
   @media only screen and (max-width: $desktop) {
     padding-top: 100px;
@@ -29,40 +30,47 @@
 
 .search__group {
   position: relative;
-  margin-bottom: 60px;
+  margin-bottom: 48px;
 
   .search__close {
     position: absolute;
-    right: 25px;
+    right: 28px;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    font-size: 24px;
     line-height: 1;
+    border-radius: 50%;
     color: var(--heading-font-color);
     cursor: pointer;
+    will-change: transform;
     transition: all .25s;
-
-    i {
-      vertical-align: middle;
-    }
+    background: var(--background-color);
 
     &:hover {
-      color: var(--brand-color);
+      transform: translateY(-50%) rotate(90deg);
+    }
+
+    .ion-md-close {
+      vertical-align: middle;
     }
   }
 
   .search__text {
     width: 100%;
-    padding: 24px;
-    font-size: 24px;
+    padding: 28px;
+    font-size: 20px;
     font-weight: 700;
-    line-height: 28px;
-    border: 2px solid var(--heading-font-color);
-    border-radius: 4px;
+    line-height: 24px;
+    border: 2px solid transparent;
+    border-radius: 2px;
     color: var(--heading-font-color);
-    background-color: var(--background-color);
-    box-shadow: 8px 8px 0 var(--heading-font-color);
-    outline: none;
+    background-color: var(--background-alt-color);
+    outline: 0;
     transition: all .25s;
 
     &::placeholder {
@@ -70,24 +78,28 @@
       color: var(--heading-font-color);
     }
 
+    &:focus {
+      border-color: var(--brand-color);
+    }
+
     &::-ms-clear {
       display: none;
     }
+  }
 
-    @media only screen and (max-width: $mobile) {
-      padding: 20px;
-      font-size: 20px;
+  @media only screen and (max-width: $mobile) {
+    margin-bottom: 32px;
+
+    .search__text {
+      padding: 24px;
     }
   }
 }
 
 .search-results-list {
-  height: 64vh;
-  overflow: auto;
-
   .no-results {
     width: 100%;
-    font-size: 32px;
+    margin: 0;
     text-align: center;
     color: var(--heading-font-color);
   }

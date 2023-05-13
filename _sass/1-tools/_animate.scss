@@ -5,12 +5,27 @@
   animation-iteration-count: 1;
   transition: transform .15s;
 
-  @keyframes animateElement{
+  @keyframes animateElement {
     0% {
       transform:  translate(0px,50px);
     }
     100% {
       transform:  translate(0px,0px);
     }
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1, 1);
+  }
+  25% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1.2, 1.2);
+  }
+  100% {
+    transform: scale(1, 1);
   }
 }

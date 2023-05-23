@@ -4,7 +4,7 @@ title: Jason Penniman
 logo: # You can add own logo. For example '/images/logo.png'.
 description: Jason Penniman personal blog mostly about software architecture.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://www.jasonpenniman.com" # the base hostname & protocol for your site, e.g. http://example.com
 color_scheme: auto # You can choose three modes auto, light, and dark. By default, the auto mode is set, which means the user can choose the light or dark mode themself.
 
 
@@ -27,7 +27,7 @@ social:
 #-------------------------------
 # Hero Settings
 hero:
-  hero__title: Caio!, I’m Jason.
+  hero__title: Caio! I’m Jason.
   hero__description: I'm a Cloud Solution Architect, Speaker, Teacher, Learner, Engineer, Craftsman, Whovian with his head in the Cloud.
   hero__image: '/images/avatar2.jpg'
 
@@ -78,7 +78,7 @@ hero:
 
 #-------------------------------
 # Comment Section (Disqus)
-#disqus-identifier: demo-menca # Add your shortname for Disqus Comment. For example demo-menca
+disqus-identifier: jpenniman
 
 
 #-------------------------------

@@ -1,0 +1,13 @@
+{
+  "image": "mcr.microsoft.com/devcontainers/ruby:2.7",
+  "postCreateCommand": "gem install ffi:1.17.3 bundler:2.4.22 jekyll:4.3.1",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "bierner.markdown-preview-github-styles",
+        "ms-vscode.wordcount",
+        "streetsidesoftware.code-spell-checker"
+      ]
+    }
+  }
+}

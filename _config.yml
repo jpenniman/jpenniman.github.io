@@ -27,7 +27,7 @@ social:
 #-------------------------------
 # Hero Settings
 hero:
-  hero__title: Caio! I’m Jason.
+  hero__title: Ciao! I’m Jason.
   hero__description: I'm a Cloud Solution Architect, Speaker, Teacher, Learner, Engineer, Craftsman, Whovian with his head in the Cloud.
   hero__image: '/images/avatar2.jpg'
 

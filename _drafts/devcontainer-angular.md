@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Angular, Asprire, and Dev Containers
-date: 2024-12-24
+date: 2025-12-24
 image: /blog/images/blank-tile.png
 author: Jason M Penniman
 excerpt: Let's take a look at how constants work in C# and why using static readonly might be better some cases.

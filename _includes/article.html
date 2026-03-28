@@ -29,8 +29,8 @@
         <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
       </h2>
 
-      {% if post.description %}
-      <p class="article__excerpt">{{ post.description }}</p>
+      {% if post.excerpt %}
+      <p class="article__excerpt">{{ post.excerpt }}</p>
       {% endif %}
 
     </div>

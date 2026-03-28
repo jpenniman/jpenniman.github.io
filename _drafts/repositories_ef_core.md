@@ -175,7 +175,7 @@ news is Entity Framework already allows us to swap database implementations with
 Such a database swap is only realistic, with or without EF, if the database is strictly a data store and the swap is to
 another database of the same type. If the application takes advantage of stored procedures and/or triggers, UDFs, UDTs,
 etc., all that needs to be re-written anyway. If you are moving from SQL Server to MongoDB for example, the data model
-itself likely needs to be redesigned to be more document friendly--Mongo and denormalization don't play well together.
+itself likely needs to be redesigned to be more document friendly--Mongo and normalization don't play well together.
 
 ### What about testing?
 

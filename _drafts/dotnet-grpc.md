@@ -1,13 +1,14 @@
 ---
 layout: post
 title: gRPC
-date: 2020-03-20
+date: 2024-12-24
 image: /blog/images/blank-tile.png
 author: Jason M Penniman
 excerpt: gRPC
 tags:
 - dotnet
 - C#
+- gRPC
 ---
 
 
@@ -78,4 +79,42 @@ public class OrderService : IOrderService
     }
 }
 ```
+
+gRPC must have a single object root for request and response. 
+
+Invalid:
+- Request has individual parameters
+- Response is an array
+
+```cs
+[ServiceContract]
+public interface ICustomerService
+{
+    [OperationContract]
+    Customers[] GetCustomers(int page, int size);
+}
+```
+
+Valid:
+```cs
+[ProtoContract]
+public record GetCustomersRequest([property: ProtoMember(1)] int Page, [property: ProtoMember(2)] int Size)
+{}
+
+[ProtoContract]
+public record GetCustomersResponse(
+    [property: ProtoMember(1)] int Total,
+    [property: ProtoMember(2)] int Page,
+    [property: ProtoMember(3)] int Count,
+    [property: ProtoMember(4)] Customers[] Customers)
+{}
+
+[ServiceContract]
+public interface ICustomerService
+{
+    [OperationContract]
+    GetCustomersResponse GetCustomers(GetCustomersRequest request);
+}
+```
+
 

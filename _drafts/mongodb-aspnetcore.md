@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Using MongoDB in AspNetCore
-date: 2020-03-20
+date: 2024-12-24
 image: /blog/images/blank-tile.png
 author: Jason M Penniman
 excerpt: Let's take a look at using MongoDB in AspNet Core applications and microservices.
@@ -10,6 +10,8 @@ tags:
 - C#
 - MongoDB
 ---
+
+# Introduction
 
 The MongoDB client in the C# driver is designed to be reused throughout the lifetime of the application, as it manages
 connection pooling.
@@ -21,7 +23,7 @@ A couple ways we can handle this:
 
 There are pros and cons to each.
 
-## Dependency Injection
+# Dependency Injection
 
 The simplest approach is to simply register the client as a singleton in our IoC container and let the container handle
 the lifetime.
@@ -46,17 +48,17 @@ class CustomerDao
 }
 ```
 
-### Pros
+## Pros
 
 * Very simple. 
 * It does not require extra ceremony and uses a basic factory method as part of the container registration.
 
-### Cons
+## Cons
 
 * It ties the solution to DI.
 * Risks transient usage.
 
-## Singleton Factory
+# Singleton Factory
 
 ```cs
 public static class MongoClientFactory
@@ -117,17 +119,17 @@ class CustomerDao
 }
 ```
 
-### Pros
+## Pros
 
 * Ensures that no matter how it is used, there is only one instance of `MongoClient`
 * Removes the dependency on an IoC container
-* Clearly expresses the intent regardless of the presents of an IoC container.
+* Clearly expresses the intent regardless of the presence of an IoC container.
 
-### Cons
+## Cons
 
 * More code to maintain for something that might never happen.
 
-## Conclusion
+# Conclusion
 
 The key take-away here is that there should only be a single instance of `MongoClient`. How we choose to handle this
 depends on the needs of the project. My personal preference--keep it simple and just use leverage the IoC container if
